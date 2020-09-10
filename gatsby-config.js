@@ -27,6 +27,40 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://dog.ceo/api/breeds/image/random",
+        rootKey: "dogs",
+        options: {
+          schemas: {
+            message: String,
+            status: String,
+          },
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url:
+          "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/volvo?format=json",
+        rootKey: "cars",
+        options: {
+          schemas: {
+            Count: Number,
+            Message: String,
+            SearchCriteria: String,
+            Results: {
+              Make_ID: Number,
+              Make_Name: String,
+              Model_ID: Number,
+              Model_Name: String,
+            },
+          },
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
