@@ -7,8 +7,10 @@ export default ({ data }) => (
   <Layout>
     {data.allContentfulArticle.edges.map(item => (
       <div>
-        <h2>{item.node.title}</h2>
-        {documentToReactComponents(item.node.longText.json)}
+        <h2>
+          {item.node.title} <small>({item.node.year})</small>
+        </h2>
+        {documentToReactComponents(item.node.body.json)}
         <hr />
       </div>
     ))}
@@ -18,13 +20,15 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    allContentfulArticle {
+    allContentfulArticle(sort: { fields: order, order: ASC }) {
       edges {
         node {
-          title
-          longText {
+          body {
             json
           }
+          title
+          order
+          year
         }
       }
     }
