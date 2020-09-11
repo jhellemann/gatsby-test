@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link, useStaticQuery } from "gatsby"
+import Layout from "../components/layout"
 
 const DogsPage = () => {
   const data = useStaticQuery(graphql`
@@ -21,15 +22,23 @@ const DogsPage = () => {
   }, [])
 
   return (
-    <React.Fragment>
-      <h4>This is a static dog:</h4>
+    <Layout>
+      <h2>
+        Get your daily random dog from{" "}
+        <a href="https://dog.ceo/dog-api/">Dog API</a>
+      </h2>
+      <h4>
+        This is a "build time" dog that will only be changed upon a new build:
+      </h4>
       <img src={data.dogs.message} alt="a cute static dog" />
       <br />
-      <h4>This is a random dog:</h4>
+      <h4>
+        This is a random "runtime" dog that will change on every page refresh:
+      </h4>
       <img src={randomDog} alt="a cute random dog" />
       <br />
       <Link to="/">Back to home</Link>
-    </React.Fragment>
+    </Layout>
   )
 }
 

@@ -1,9 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Layout from "../components/layout"
 
 export default ({ data }) => (
-  <React.Fragment>
+  <Layout>
     {data.allContentfulArticle.edges.map(item => (
       <div>
         <h2>{item.node.title}</h2>
@@ -12,7 +13,7 @@ export default ({ data }) => (
       </div>
     ))}
     <Link to="/">Back to home</Link>
-  </React.Fragment>
+  </Layout>
 )
 
 export const query = graphql`
