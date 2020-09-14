@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 
 const DogsPage = () => {
