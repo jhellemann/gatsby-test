@@ -6,7 +6,7 @@ const StarWarsPage = () => {
   // Client-side Runtime Data Fetching
   const [starWarsMovies, setStarWarsMovies] = useState([])
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API}/star-wars`)
+    fetch(`${process.env.GATSBY_API_URL}/star-wars`)
       .then(response => response.json())
       .then(resultData => {
         setStarWarsMovies(resultData)
