@@ -8,10 +8,12 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - master
+  repository_dispatch:
+    types: [publish-event]
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed') || github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
@@ -34,6 +36,7 @@ jobs:
         env:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          API: "api"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

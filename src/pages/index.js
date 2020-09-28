@@ -18,6 +18,7 @@ const IndexPage = () => (
     <Link to="/articles/">Read some articles</Link> <br />
     <Link to="/dogs/">Get your daily random dog</Link> <br />
     <Link to="/image/">Image of an astronaut on the moon</Link> <br />
+    <Link to="/star-wars/">Star Wars movies</Link> <br />
   </Layout>
 )
 
