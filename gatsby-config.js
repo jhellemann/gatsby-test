@@ -32,6 +32,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-apollo",
+      options: {
+        uri: process.env.GATSBY_API_URL,
+      },
+    },
+    {
       resolve: "gatsby-source-custom-api",
       options: {
         url: "https://dog.ceo/api/breeds/image/random",
